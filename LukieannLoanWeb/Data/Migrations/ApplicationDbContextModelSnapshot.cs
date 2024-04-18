@@ -17,7 +17,7 @@ namespace LukieannLoanWeb.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.3")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -33,7 +33,7 @@ namespace LukieannLoanWeb.Data.Migrations
                     b.Property<double>("Amount")
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime?>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("LoanTermID")
@@ -225,7 +225,7 @@ namespace LukieannLoanWeb.Data.Migrations
                         {
                             Id = "be210b42-8689-4b84-833a-97dff99352c5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "889ceca3-ce29-40a4-99ce-8957b0fad308",
+                            ConcurrencyStamp = "896b3186-9072-446c-9acd-9eb6729be15f",
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@test.com",
                             EmailConfirmed = true,
@@ -234,9 +234,9 @@ namespace LukieannLoanWeb.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@TEST.COM",
                             NormalizedUserName = "ADMIN@TEST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEIN0u9Oc+cKO3eMJiwoctp7t8LwX6bZVjwlpSyQkKaW4RXV6gVKQDcyr7NWYQSgIw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGQXodJv9y1oA/OFXgXaE8EMtqYZV/FSM6V0Sgwdw7R4Ilgl8SeqpwLJiTiHxAdGuQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9a6d6335-7e94-40fa-807c-9b50c411dcb0",
+                            SecurityStamp = "7fe31b6a-35f4-4d0a-8751-61d05fd3a252",
                             TwoFactorEnabled = false,
                             UserName = "admin@test.com"
                         },
@@ -244,7 +244,7 @@ namespace LukieannLoanWeb.Data.Migrations
                         {
                             Id = "cf310b42-6529-8b84-831a-97dff74352c5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "34a93b92-2b9c-460d-bfcd-d166c23673a3",
+                            ConcurrencyStamp = "e51b23f8-a4d0-4831-bdb3-f31712e82cde",
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "user@test.com",
                             EmailConfirmed = true,
@@ -253,9 +253,9 @@ namespace LukieannLoanWeb.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@TEST.COM",
                             NormalizedUserName = "USER@TEST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEI+twKT3we/DUTKY2oTTE8LWDs7lNzo1gMtAH2L5gJP1u5e62C+kerz1e29Ec5t2hg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEH9vFEZpQrQSfeITXSvsKc5bjUtO2kmQh4u3O7IWRt6eTltHac5BA1/V3mL9UDkXmw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "042c77b8-11f6-4069-9353-05225fee4466",
+                            SecurityStamp = "1356985e-f30a-4a92-8f49-382560d05ac9",
                             TwoFactorEnabled = false,
                             UserName = "user@test.com"
                         });

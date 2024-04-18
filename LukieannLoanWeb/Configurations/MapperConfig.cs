@@ -7,7 +7,10 @@ namespace LukieannLoanWeb.Configurations
     {
         public MapperConfig()
         {
-            CreateMap< LoanTypeVM, LoanType > ().ReverseMap();
+            CreateMap< LoanType, LoanTypeVM > ().ReverseMap();
+            CreateMap< LoanTerm, LoanTermVM > ().ReverseMap();
+            CreateMap< LoanRequest, LoanRequestCreateVM> ().ReverseMap();
+            CreateMap< LoanRequest, LoanRequestVM > ().ReverseMap();
         }
 
 

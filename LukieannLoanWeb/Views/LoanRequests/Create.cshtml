@@ -1,0 +1,48 @@
+﻿@model LoanRequestCreateVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>LoanRequest</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control datepicker" type="date" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="LoanTypeId" class="control-label"></label>
+                <select asp-for="LoanTypeId" class ="form-select " asp-items="@Model.LoanTypes">
+                    <option>Select Loan Type</option>
+                </select>
+                <span asp-validation-for="LoanTypeId" class="text-danger"></span>
+                
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="LoanTermId" class="control-label"></label>
+                <select asp-for="LoanTermId" class="form-select" asp-items="@Model.LoanTerms">
+                    <option>Select Loan Term</option>
+                </select>
+                <span asp-validation-for="LoanTermId" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <a class="btn btn-secondary" asp-action="Index"> Back to List </a>
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

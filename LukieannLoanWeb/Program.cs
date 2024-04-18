@@ -20,10 +20,13 @@ builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfi
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddTransient<IEmailSender>(s => new EmailSender("localhost", 25, "no-reply@leavemanagement.com"));
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<ILoanTypeRepository, LoanTypeRepository>();
+builder.Services.AddScoped<ILoanRequestRepository, LoanRequestRepository>();
 
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 

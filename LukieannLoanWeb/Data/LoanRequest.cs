@@ -3,7 +3,7 @@
     public class LoanRequest
     {
         public int Id { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
         public string UserId { get; set; }
         public LoanType LoanType { get; set; }
         public int LoanTypeId { get; set; }

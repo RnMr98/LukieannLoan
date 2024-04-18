@@ -1,0 +1,63 @@
+﻿@model LoanViewVM
+
+@{
+    ViewData["Title"] = "My Loans";
+}
+
+<h1>My Loans</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanRequests[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanRequests[0].LoanType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanRequests[0].LoanTerm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanRequests[0].Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanRequests[0].Approved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanRequests[0].Cancelled)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.LoanRequests)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoanType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoanTerm.Term)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Approved)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cancelled)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
