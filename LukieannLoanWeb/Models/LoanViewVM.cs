@@ -5,6 +5,7 @@
         public LoanViewVM(List<LoanRequestVM> loanRequests)
         {
             LoanRequests = loanRequests;
+            
         }
 
 

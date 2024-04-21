@@ -93,6 +93,7 @@ namespace LukieannLoanWeb.Controllers
 
             model.LoanTerms = new SelectList(_context.LoanTerms, "Id", "Term", model.LoanTermId);
             model.LoanTypes = new SelectList(_context.LoanTypes, "Id", "Name", model.LoanTypeId);
+            model.Date = DateTime.Now;
             return View(model);
         }
 

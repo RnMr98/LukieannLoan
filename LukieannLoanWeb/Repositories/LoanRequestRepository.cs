@@ -40,13 +40,16 @@ namespace LukieannLoanWeb.Repositories
 
         public async Task<List<LoanRequest>> GetAllAsync(string userId)
         {
-            return await context.LoanRequests.Where(q => q.UserId == userId).ToListAsync();
+            var view = await context.LoanRequests.Include(q => q.LoanType).Include(q => q.LoanTerm)
+                .Where(q => q.UserId == userId).ToListAsync();
+            return (view);
         }
 
         public async Task<LoanViewVM> GetMyLoanDetails()
         {
             var user = await userManager.GetUserAsync(httpContextAccessor?.HttpContext?.User);
             var loanRequests = mapper.Map<List<LoanRequestVM>>( await GetAllAsync(user.Id));
+            
             
 
             var model = new LoanViewVM(loanRequests);
