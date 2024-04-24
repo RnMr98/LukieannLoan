@@ -9,9 +9,11 @@ using LukieannLoanWeb.Data;
 using LukieannLoanWeb.Contracts;
 using AutoMapper;
 using LukieannLoanWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LukieannLoanWeb.Controllers
 {
+    [Authorize (Roles =  "Administrator")]
     public class LoanTypesController : Controller
     {
         private readonly ILoanTypeRepository loanTypeRepository;

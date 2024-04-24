@@ -14,9 +14,9 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-secondary border-bottom box-shadow mb-3">
-            <div class="container container-fluid">
+            <div class="container-fluid">
 
-                <div class="container">
+                <div class="container w-25">
                     <a class="navbar-brand text-white fw-bold fst-italic fs-3" asp-area="" asp-controller="Home" asp-action="Index">Lukie-Ann's Loans</a><br />
                     <a class="navbar-brand text-white fw-bold fst-italic fs-6" asp-area="" asp-controller="Home" asp-action="Index">And Financial Services</a>
                 </div>
@@ -26,23 +26,28 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                  
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between w-100">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="LoanTypes" asp-action="Index">Loan Types</a>
-                        </li>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end w-100">
+                    <div>
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="LoanTypes" asp-action="Index">Loan Types</a>
+                                </li>
+                            }
                         
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="LoanRequests" asp-action="Create">Request A Loan</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="LoanRequests" asp-action="Create">Request A Loan</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="LoanRequests" asp-action="MyLoans">My Loans</a>
-                        </li>
-                    </ul>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="LoanRequests" asp-action="MyLoans">My Loans</a>
+                            </li>
+                        </ul>
+                    </div>
                     <partial name="_LoginPartial" />
                 </div>
             </div>
