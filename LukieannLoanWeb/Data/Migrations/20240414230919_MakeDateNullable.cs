@@ -41,7 +41,7 @@ namespace LukieannLoanWeb.Data.Migrations
                 name: "Date",
                 table: "LoanRequests",
                 type: "datetime2",
-                nullable: false,
+                nullable: true,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",

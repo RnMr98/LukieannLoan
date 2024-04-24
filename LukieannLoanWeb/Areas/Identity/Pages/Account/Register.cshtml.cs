@@ -93,6 +93,10 @@ namespace LukieannLoanWeb.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "First Name")]
             public string FirstName { get; set; }
+          
+            [Display(Name = "Middle Name")]
+            public string MiddleName { get; set; }
+
             [Required]
             [Display(Name = "Last Name")]
             public string LastName { get; set; }

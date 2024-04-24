@@ -41,7 +41,7 @@ namespace LukieannLoanWeb.Data.Migrations
                 name: "ParishId",
                 table: "Customers",
                 type: "int",
-                nullable: false,
+                nullable: true,
                 defaultValue: 0,
                 oldClrType: typeof(int),
                 oldType: "int",

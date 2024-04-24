@@ -13,6 +13,6 @@ namespace LukieannLoanWeb.Models
 
         [Required]
         [Display(Name="Interest Rate")]
-        public int Interest { get; set; }
+        public decimal? Interest { get; set; }
     }
 }

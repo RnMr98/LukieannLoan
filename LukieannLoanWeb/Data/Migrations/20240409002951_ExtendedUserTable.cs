@@ -30,6 +30,12 @@ namespace LukieannLoanWeb.Data.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
+               name: "MiddleName",
+               table: "AspNetUsers",
+               type: "nvarchar(max)",
+               nullable: true);
+
+            migrationBuilder.AddColumn<string>(
                 name: "LastName",
                 table: "AspNetUsers",
                 type: "nvarchar(max)",
@@ -56,6 +62,10 @@ namespace LukieannLoanWeb.Data.Migrations
             migrationBuilder.DropColumn(
                 name: "FirstName",
                 table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+               name: "MiddleName",
+               table: "AspNetUsers");
 
             migrationBuilder.DropColumn(
                 name: "LastName",

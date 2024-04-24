@@ -94,7 +94,8 @@ namespace LukieannLoanWeb.Controllers
             {
                 try
                 {
-                    var loanTypes = mapper.Map<List<LoanTypeVM>>(await loanTypeRepository.GetAllAsync());
+                    var loanTypes = mapper.Map<LoanType>(loanTypeVM);
+                        await loanTypeRepository.UpdateAsync(loanTypes);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -109,20 +110,6 @@ namespace LukieannLoanWeb.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(loanTypeVM);
-        }
-
-        // GET: LoanTypes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-
-            var loanType = await loanTypeRepository.GetAsync(id);
-            if (loanType != null)
-            {
-                return NotFound();
-            }
-
-            var loanTypeVM = mapper.Map<LoanTypeVM>(loanType);
             return View(loanTypeVM);
         }
 
