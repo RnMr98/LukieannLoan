@@ -7,6 +7,9 @@ using LukieannLoanWeb.Contracts;
 using LukieannLoanWeb.Repositories;
 using LukieannLoanWeb.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using LukieannLoanWeb.Models;
+using LukieannLoanWeb.Configurations.Entities;
+using LukieannLoanWeb.Constants;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +21,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+        .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddHttpContextAccessor();
 
@@ -27,6 +30,8 @@ builder.Services.AddTransient<IEmailSender>(s => new EmailSender("localhost", 25
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<ILoanTypeRepository, LoanTypeRepository>();
 builder.Services.AddScoped<ILoanRequestRepository, LoanRequestRepository>();
+builder.Services.AddScoped<LoanTerm>();
+builder.Services.AddScoped<Parish>();
 
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 

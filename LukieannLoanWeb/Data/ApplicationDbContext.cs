@@ -18,6 +18,9 @@ namespace LukieannLoanWeb.Data
             builder.ApplyConfiguration(new RoleSeedConfiguration());
             builder.ApplyConfiguration(new UserSeedConfiguration());
             builder.ApplyConfiguration(new UserRoleSeedConfiguration());
+            builder.ApplyConfiguration(new TermsSeederConfiguration());
+            builder.ApplyConfiguration(new ParishSeederConfiguration());
+
         }
 
         public DbSet<LoanStatus> LoanStatuses { get; set; }

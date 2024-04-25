@@ -28,8 +28,7 @@ namespace LukieannLoanWeb.Controllers
         // GET: LoanRequests
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.LoanRequests.Include(l => l.LoanTerm).Include(l => l.LoanType);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await loanRequestRepository.GetAllAsync());
         }
 
         // GET: LoanRequests/Details/5

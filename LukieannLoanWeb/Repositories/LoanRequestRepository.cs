@@ -8,30 +8,22 @@ using Microsoft.Identity.Client;
 
 namespace LukieannLoanWeb.Repositories
 {
-    public class LoanRequestRepository : GenericRepository<LoanRequest>, ILoanRequestRepository
+    public class LoanRequestRepository(ApplicationDbContext context,
+        IMapper mapper,
+        IHttpContextAccessor httpContextAccessor,
+        UserManager<User> userManager) : GenericRepository<LoanRequest>(context), ILoanRequestRepository
     {
-        private readonly ApplicationDbContext context;
-        private readonly IMapper mapper;
-        private readonly IHttpContextAccessor httpContextAccessor;
-        private readonly UserManager<User> userManager;
-
-        public LoanRequestRepository(ApplicationDbContext context, 
-            IMapper mapper, 
-            IHttpContextAccessor httpContextAccessor, 
-            UserManager<User> userManager) : base(context)
-        {
-            this.context = context;
-            this.mapper = mapper;
-            this.httpContextAccessor = httpContextAccessor;
-            this.userManager = userManager;
-        }
+        private readonly ApplicationDbContext context = context;
+        private readonly IMapper mapper = mapper;
+        private readonly IHttpContextAccessor httpContextAccessor = httpContextAccessor;
+        private readonly UserManager<User> userManager = userManager;
 
         public async Task CreateLoanRequest(LoanRequestCreateVM model)
         {
             var user = await userManager.GetUserAsync(httpContextAccessor?.HttpContext?.User);
 
             var loanRequest = mapper.Map<LoanRequest>(model);
-            loanRequest.Date= DateTime.Now;
+            loanRequest.Date = DateTime.Now;
             loanRequest.UserId = user.Id;
 
             await AddAsync(loanRequest);

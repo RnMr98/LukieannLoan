@@ -4,6 +4,7 @@ using LukieannLoanWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LukieannLoanWeb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240425194055_AddingTermsToDataBase")]
+    partial class AddingTermsToDataBase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -166,78 +169,6 @@ namespace LukieannLoanWeb.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Parishes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Clarendon"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Hanover"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Kingston"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Manchester"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Portland"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "St Andrew"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "St Ann"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Saint Catherine"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Saint Elizabeth"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Saint James"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Name = "Saint Mary"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Name = "St Thomas"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Name = "Trelawny"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Name = "Westmoreland"
-                        });
                 });
 
             modelBuilder.Entity("LukieannLoanWeb.Data.User", b =>
@@ -341,7 +272,7 @@ namespace LukieannLoanWeb.Data.Migrations
                         {
                             Id = "be210b42-8689-4b84-833a-97dff99352c5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8711d6a0-de4a-42b5-8496-8531ea4dd156",
+                            ConcurrencyStamp = "b483949d-2d37-4edd-9546-ec6718f7474a",
                             Email = "admin@test.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -349,9 +280,9 @@ namespace LukieannLoanWeb.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@TEST.COM",
                             NormalizedUserName = "ADMIN@TEST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMfrZoQtYfhAJKx2PlY0Qlcnwv/jjMTt+kYtIYY5YWneDPVSSWckKG1HidHixJy85A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOGcAWRkwi45XOgkm/d0pBW7aHyHoHGvQgGA6o5c0ySXXgyJtL5V+RV/IplU9xaojw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "aac9891f-7743-4622-8d8f-15bdc5ac84f0",
+                            SecurityStamp = "25417361-45a9-47e1-af85-bb6faa70e9c5",
                             TwoFactorEnabled = false,
                             UserName = "admin@test.com"
                         },
@@ -359,7 +290,7 @@ namespace LukieannLoanWeb.Data.Migrations
                         {
                             Id = "cf310b42-6529-8b84-831a-97dff74352c5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "47691091-f3f5-43d1-bac1-9ac0792a9777",
+                            ConcurrencyStamp = "31ef3f13-627a-420e-9ce4-7982a8236197",
                             Email = "user@test.com",
                             EmailConfirmed = true,
                             FirstName = "Simple",
@@ -367,9 +298,9 @@ namespace LukieannLoanWeb.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@TEST.COM",
                             NormalizedUserName = "USER@TEST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEInN5zLBrJDtTP+2S0nXJ08rwmKp8HeNvcdWrrLiA5AAJauq3q2CibUg3pLQgEXsCg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHTKgvM9Nlcl1TLpsV5FJoqElG0wk1ieHVj+wfrC5nDrugi/Ty8zHGvRJIRBauGAUA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "586a6d50-4a6f-4d9b-9bda-c9de986835d4",
+                            SecurityStamp = "20d3bf59-ba5a-49bd-8327-391f3ab23325",
                             TwoFactorEnabled = false,
                             UserName = "user@test.com"
                         });

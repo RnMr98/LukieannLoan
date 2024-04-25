@@ -64,7 +64,9 @@
 
             <div class="d-inline-flex justify-content-between w-100 gap-3 mb-3">
                 <div class="form-floating w-100">
-                    <select asp-for="Input.Parish" asp-items="@(new SelectList(Model.Parishes, "Id", "Name"))" class="form-control" aria-required="true"></select>
+                    <select asp-for="Input.Parish" asp-items="@(new SelectList(Model.Parishes, "Id", "Name"))" class="form-control" aria-required="true">
+                        <option>Select A Parish</option>
+                    </select>
                    <label asp-for="Input.Parish"></label> 
                    <span asp-validation-for="Input.Parish" class="text-danger"></span>
                 </div>
