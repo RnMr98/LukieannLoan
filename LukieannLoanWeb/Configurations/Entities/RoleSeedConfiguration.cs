@@ -21,6 +21,13 @@ namespace LukieannLoanWeb.Configurations.Entities
                     Id = "dr210b42 - 8523 - 4b74 - 783a - 97dff66342c5",
                     Name = Roles.User,
                     NormalizedName = Roles.User.ToUpper()
+                },
+
+                new IdentityRole
+                {
+                    Id = "dr226c42 - 8723 - 4a74 - 763a - 97dff65342b4",
+                    Name = Roles.LoanManager,
+                    NormalizedName = Roles.LoanManager.ToUpper()
                 }
 
 

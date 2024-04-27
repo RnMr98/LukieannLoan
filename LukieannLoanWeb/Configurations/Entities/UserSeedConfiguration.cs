@@ -36,7 +36,20 @@ namespace LukieannLoanWeb.Configurations.Entities
                     LastName = "User",
                     PasswordHash = hasher.HashPassword(null, "P@ssword@1"),
                     EmailConfirmed = true
-                }
+                },
+
+                  new User
+                  {
+                      Id = "cc511b42-6729-8b84-831a-97dff74352c4",
+                      Email = "loanManager@test.com",
+                      NormalizedEmail = "LOANMANAGER@TEST.COM",
+                      UserName = "loanManager@test.com",
+                      NormalizedUserName = "LOANMANAGER@TEST.COM",
+                      FirstName = "Loan",
+                      LastName = "Manager",
+                      PasswordHash = hasher.HashPassword(null, "P@ssword@2"),
+                      EmailConfirmed = true
+                  }
                 );
         }
     }

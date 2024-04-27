@@ -34,7 +34,7 @@ namespace LukieannLoanWeb.Controllers
               .Include(l => l.LoanTerm)
               .Include(l => l.LoanType)
               .Include(q => q.LoanStatus);
-            var lMap = mapper.Map<List<LoanRequestVM>>(loanRequest);
+            var lMap = mapper.Map<List<AddCustomertoIndexVM>>(loanRequest);
             return View(lMap);
         }
 
@@ -161,7 +161,7 @@ namespace LukieannLoanWeb.Controllers
                     }
 
                 }
-                return RedirectToAction(nameof(MyLoans));
+                return RedirectToAction(nameof(Index));
             }
             ViewData["LoanTermID"] = new SelectList(_context.LoanTerms, "Id", "Term", loanRequest.LoanTermID);
             ViewData["LoanTypeId"] = new SelectList(_context.LoanTypes, "Id", "Name", loanRequest.LoanTypeId);

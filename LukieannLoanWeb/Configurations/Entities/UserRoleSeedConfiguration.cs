@@ -18,7 +18,15 @@ namespace LukieannLoanWeb.Configurations.Entities
                 {
                     RoleId = "dr210b42 - 8523 - 4b74 - 783a - 97dff66342c5",
                     UserId = "cf310b42-6529-8b84-831a-97dff74352c5"
-                }
+                },
+
+                   new IdentityUserRole<string>
+                   {
+                       RoleId = "dr226c42 - 8723 - 4a74 - 763a - 97dff65342b4",
+                       UserId = "cc511b42-6729-8b84-831a-97dff74352c4"
+                   }
+
+
                 );
         }
     }

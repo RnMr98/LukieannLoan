@@ -54,7 +54,17 @@
     </tbody>
 </table>
 
+ @if (!User.IsInRole("Loan Manager"))
+                {
 <div class="form-group container d-inline-flex justify-content-around align-content-center border-top">
     <a class="btn btn-success mt-3" asp-controller="Home" asp-action="Index"> Back To Home </a>
+     
     <a class="btn btn-secondary mt-3" asp-action="Create"> Request A New Loan </a>
-</div>
+    </div>
+}
+else
+{
+    <div class="form-group container d-inline-flex justify-content-around align-content-center border-top">
+        <a class="btn btn-success mt-3" asp-controller="LoanRequests" asp-action="Index"> Back To Loan Requests</a>
+    </div>
+}

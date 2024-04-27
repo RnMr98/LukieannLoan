@@ -38,7 +38,7 @@
 
             <div class="form-group mb-3">
                 <label asp-for="LoanStatusId" class="control-label"></label>
-                <select asp-for="LoanStatusId" class="form-select" asp-items="@Model.LoanStatus">
+                <select asp-for="LoanStatusId" class="form-select" asp-items="@Model.LoanStatus" disabled>
                     <option>Select Loan Status</option>
                 </select>
                 <span asp-validation-for="LoanStatusId" class="text-danger"></span>
