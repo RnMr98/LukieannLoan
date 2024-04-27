@@ -1,4 +1,8 @@
-﻿namespace LukieannLoanWeb.Data
+﻿using LukieannLoanWeb.Constants;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace LukieannLoanWeb.Data
 {
     public class LoanRequest
     {
@@ -10,5 +14,7 @@
         public LoanTerm? LoanTerm { get; set; }
         public int? LoanTermID { get;set; }
         public decimal? Amount { get; set; }
+        public LoanStatus? LoanStatus { get; set; }
+        public int? LoanStatusId { get; set; }
     }
 }

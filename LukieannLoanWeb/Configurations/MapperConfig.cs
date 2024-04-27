@@ -11,6 +11,7 @@ namespace LukieannLoanWeb.Configurations
             CreateMap< LoanTerm, LoanTermVM > ().ReverseMap();
             CreateMap< LoanRequest, LoanRequestCreateVM> ().ReverseMap();
             CreateMap< LoanRequest, LoanRequestVM > ().ReverseMap();
+            CreateMap<LoanStatus, LoanStatusVM>().ReverseMap();
         }
 
 

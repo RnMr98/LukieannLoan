@@ -25,13 +25,14 @@ builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfi
 
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddTransient<IEmailSender>(s => new EmailSender("localhost", 25, "no-reply@leavemanagement.com"));
+builder.Services.AddTransient<IEmailSender>(s => new EmailSender("localhost", 25, "no-reply@lukieannsloan.com"));
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<ILoanTypeRepository, LoanTypeRepository>();
 builder.Services.AddScoped<ILoanRequestRepository, LoanRequestRepository>();
 builder.Services.AddScoped<LoanTerm>();
 builder.Services.AddScoped<Parish>();
+builder.Services.AddScoped<Status>();
 
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 

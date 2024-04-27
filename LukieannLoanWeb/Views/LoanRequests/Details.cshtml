@@ -3,40 +3,54 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h1>Details</h1>
-
+<div class="container text-center w-100">
+    <h1>Loan Request Details</h1>
+</div>
 <div>
-    <h4>LoanRequest</h4>
-    <hr />
+<br />
+<hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-6">
             @Html.DisplayNameFor(model => model.Date)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-6">
             @Html.DisplayFor(model => model.Date)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-6">
             @Html.DisplayNameFor(model => model.LoanType)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-6">
             @Html.DisplayFor(model => model.LoanType.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-6">
             @Html.DisplayNameFor(model => model.LoanTerm)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-6">
             @Html.DisplayFor(model => model.LoanTerm.Term)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-6">
             @Html.DisplayNameFor(model => model.Amount)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-6">
             @Html.DisplayFor(model => model.Amount)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.LoanStatus)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.LoanStatus.Status)
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="container d-inline-flex justify-content-around align-content-center border-top">
+    @if (User.IsInRole("Administrator"))
+    {
+    <a class="btn btn-primary mt-3" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+    <a class="btn btn-warning mt-3" asp-action="Index">Back to Loan Requests</a>
+    }
+
+    <a class="btn btn-warning mt-3" asp-action="MyLoans">Back to My Loans</a>
+    
 </div>
+
+

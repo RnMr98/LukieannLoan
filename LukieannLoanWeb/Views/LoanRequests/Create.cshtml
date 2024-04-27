@@ -13,6 +13,7 @@
     <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group mb-3">
                 <label asp-for="LoanTypeId" class="control-label"></label>
                 <select asp-for="LoanTypeId" class ="form-select " asp-items="@Model.LoanTypes">
@@ -28,11 +29,21 @@
                 </select>
                 <span asp-validation-for="LoanTermId" class="text-danger"></span>
             </div>
+
             <div class="form-group mb-3">
                 <label asp-for="Amount" class="control-label"></label>
                 <input asp-for="Amount" class="form-control"/>
                 <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="LoanStatusId" class="control-label"></label>
+                <select asp-for="LoanStatusId" class="form-select" asp-items="@Model.LoanStatus">
+                    <option>Select Loan Status</option>
+                </select>
+                <span asp-validation-for="LoanStatusId" class="text-danger"></span>
+            </div>
+
             <div class="form-group container d-inline-flex justify-content-around align-content-center border-top">
                 <a class="btn btn-success mt-3" asp-controller="Home" asp-action="Index"> Back To Home </a>
                 <a class="btn btn-secondary mt-3" asp-action="MyLoans"> View Loans </a>

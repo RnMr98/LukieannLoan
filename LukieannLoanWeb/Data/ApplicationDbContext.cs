@@ -20,6 +20,7 @@ namespace LukieannLoanWeb.Data
             builder.ApplyConfiguration(new UserRoleSeedConfiguration());
             builder.ApplyConfiguration(new TermsSeederConfiguration());
             builder.ApplyConfiguration(new ParishSeederConfiguration());
+            builder.ApplyConfiguration(new StatusSeederConfiguration());
 
         }
 

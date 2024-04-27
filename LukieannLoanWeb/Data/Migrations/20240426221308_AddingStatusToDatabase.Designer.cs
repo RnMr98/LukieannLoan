@@ -4,6 +4,7 @@ using LukieannLoanWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LukieannLoanWeb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240426221308_AddingStatusToDatabase")]
+    partial class AddingStatusToDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,9 +39,6 @@ namespace LukieannLoanWeb.Data.Migrations
                     b.Property<DateTime?>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("LoanStatusId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("LoanTermID")
                         .HasColumnType("int");
 
@@ -49,8 +49,6 @@ namespace LukieannLoanWeb.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LoanStatusId");
 
                     b.HasIndex("LoanTermID");
 
@@ -363,7 +361,7 @@ namespace LukieannLoanWeb.Data.Migrations
                         {
                             Id = "be210b42-8689-4b84-833a-97dff99352c5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "65cc2976-0075-4f53-9b6b-f761b94f98b5",
+                            ConcurrencyStamp = "7d71ed67-4ce1-4a1e-885c-34ddfad39291",
                             Email = "admin@test.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -371,9 +369,9 @@ namespace LukieannLoanWeb.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@TEST.COM",
                             NormalizedUserName = "ADMIN@TEST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHL9te/7vl3WdV1T0omV7rWPW2igLOZckdpROSL2MTjrwLTlv/zazjCz+inDCVD2ng==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBr3Yzs2KENpZOIIU1xFrEPY7KdnZHgseTOfEQYd0WRgaUStT+taWhVSoO4S9+lmQQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cd2f1a7d-6373-4c0f-a3f9-b845ed0a313e",
+                            SecurityStamp = "1f8f359e-4b7a-43db-9539-dd5e44abbffa",
                             TwoFactorEnabled = false,
                             UserName = "admin@test.com"
                         },
@@ -381,7 +379,7 @@ namespace LukieannLoanWeb.Data.Migrations
                         {
                             Id = "cf310b42-6529-8b84-831a-97dff74352c5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1427d570-48fa-4baa-ab23-1f1f5fe8fb5e",
+                            ConcurrencyStamp = "96479240-7200-4995-a142-d114c4ecaf91",
                             Email = "user@test.com",
                             EmailConfirmed = true,
                             FirstName = "Simple",
@@ -389,9 +387,9 @@ namespace LukieannLoanWeb.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@TEST.COM",
                             NormalizedUserName = "USER@TEST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKKdkP0wMURdwUl+bHzHK9aefhiZZwodbhUElO4zyJcseyoKF3+lN80VZceFOrpMJQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEO68KRrJR3i5b3R0sSEG058QYcMPIjvZm/b8xTwc0hzh9MiF9+r7X/jOI56Ln5XVgQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4d02c338-e9ce-45cb-ab73-280729b53317",
+                            SecurityStamp = "8ebd0121-0f1e-4881-8c76-76f706e106fa",
                             TwoFactorEnabled = false,
                             UserName = "user@test.com"
                         });
@@ -562,10 +560,6 @@ namespace LukieannLoanWeb.Data.Migrations
 
             modelBuilder.Entity("LukieannLoanWeb.Data.LoanRequest", b =>
                 {
-                    b.HasOne("LukieannLoanWeb.Data.LoanStatus", "LoanStatus")
-                        .WithMany()
-                        .HasForeignKey("LoanStatusId");
-
                     b.HasOne("LukieannLoanWeb.Data.LoanTerm", "LoanTerm")
                         .WithMany()
                         .HasForeignKey("LoanTermID");
@@ -573,8 +567,6 @@ namespace LukieannLoanWeb.Data.Migrations
                     b.HasOne("LukieannLoanWeb.Data.LoanType", "LoanType")
                         .WithMany()
                         .HasForeignKey("LoanTypeId");
-
-                    b.Navigation("LoanStatus");
 
                     b.Navigation("LoanTerm");
 

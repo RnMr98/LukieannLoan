@@ -8,11 +8,11 @@ namespace LukieannLoanWeb.Models
     {
         public int Id { get; set; }
         [Required]
-
+        [Display(Name = "LOAN NAME")]
         public string? Name { get; set; }
 
         [Required]
-        [Display(Name="Interest Rate")]
+        [Display(Name="INTEREST RATE")]
         public decimal? Interest { get; set; }
     }
 }

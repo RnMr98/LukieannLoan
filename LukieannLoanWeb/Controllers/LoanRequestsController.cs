@@ -18,17 +18,24 @@ namespace LukieannLoanWeb.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly ILoanRequestRepository loanRequestRepository;
+        private readonly IMapper mapper;
 
-        public LoanRequestsController(ApplicationDbContext context, ILoanRequestRepository loanRequestRepository)
+        public LoanRequestsController(ApplicationDbContext context, ILoanRequestRepository loanRequestRepository, IMapper mapper)
         {
             _context = context;
             this.loanRequestRepository = loanRequestRepository;
+            this.mapper = mapper;
         }
 
         // GET: LoanRequests
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await loanRequestRepository.GetAllAsync());
+            var loanRequest = _context.LoanRequests
+              .Include(l => l.LoanTerm)
+              .Include(l => l.LoanType)
+              .Include(q => q.LoanStatus);
+            var lMap = mapper.Map<List<LoanRequestVM>>(loanRequest);
+            return View(lMap);
         }
 
         // GET: LoanRequests/Details/5
@@ -42,6 +49,7 @@ namespace LukieannLoanWeb.Controllers
             var loanRequest = await _context.LoanRequests
                 .Include(l => l.LoanTerm)
                 .Include(l => l.LoanType)
+                .Include(q => q.LoanStatus)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (loanRequest == null)
             {
@@ -64,8 +72,11 @@ namespace LukieannLoanWeb.Controllers
             var model = new LoanRequestCreateVM
             {
                 Date = DateTime.Now,
+                LoanStatusId = 1,
                 LoanTerms = new SelectList(_context.LoanTerms, "Id", "Term"),
-                LoanTypes = new SelectList(_context.LoanTypes, "Id", "Name")
+                LoanTypes = new SelectList(_context.LoanTypes, "Id", "Name"),
+                LoanStatus = new SelectList(_context.LoanStatuses, "Id", "Status")
+
             };
             return View(model);
         }
@@ -85,13 +96,16 @@ namespace LukieannLoanWeb.Controllers
                     return RedirectToAction(nameof(MyLoans));
                 }
             }
-            catch (Exception ex)
+                catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, "An Error Has Occurred. Please Try Again Later");
             }
 
             model.LoanTerms = new SelectList(_context.LoanTerms, "Id", "Term", model.LoanTermId);
             model.LoanTypes = new SelectList(_context.LoanTypes, "Id", "Name", model.LoanTypeId);
+            model.LoanStatus = new SelectList(_context.LoanStatuses, "Id", "Status", model.LoanStatusId);
+
+
             model.Date = DateTime.Now;
             return View(model);
         }
@@ -111,6 +125,8 @@ namespace LukieannLoanWeb.Controllers
             }
             ViewData["LoanTermID"] = new SelectList(_context.LoanTerms, "Id", "Term", loanRequest.LoanTermID);
             ViewData["LoanTypeId"] = new SelectList(_context.LoanTypes, "Id", "Name", loanRequest.LoanTypeId);
+            ViewData["LoanStatusId"] = new SelectList(_context.LoanStatuses, "Id", "Status", loanRequest.LoanStatusId);
+
             return View(loanRequest);
         }
 
@@ -119,7 +135,7 @@ namespace LukieannLoanWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Date,UserId,LoanTypeId,LoanTermID,Amount")] LoanRequest loanRequest)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Date,UserId,LoanTypeId,LoanTermID,Amount,LoanStatusId")] LoanRequest loanRequest)
         {
             if (id != loanRequest.Id)
             {
@@ -143,11 +159,14 @@ namespace LukieannLoanWeb.Controllers
                     {
                         throw;
                     }
+
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(MyLoans));
             }
             ViewData["LoanTermID"] = new SelectList(_context.LoanTerms, "Id", "Term", loanRequest.LoanTermID);
-            ViewData["LoanTypeId"] = new SelectList(_context.LoanTypes, "Id", "Id", loanRequest.LoanTypeId);
+            ViewData["LoanTypeId"] = new SelectList(_context.LoanTypes, "Id", "Name", loanRequest.LoanTypeId);
+            ViewData["LoanStatusId"] = new SelectList(_context.LoanStatuses, "Id", "Status", loanRequest.LoanStatusId);
+
             return View(loanRequest);
         }
 
@@ -162,6 +181,7 @@ namespace LukieannLoanWeb.Controllers
             var loanRequest = await _context.LoanRequests
                 .Include(l => l.LoanTerm)
                 .Include(l => l.LoanType)
+                .Include(l => l.LoanStatusId)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (loanRequest == null)
             {
