@@ -23,7 +23,9 @@ namespace LukieannLoanWeb.Models
         [Display(Name = "AMOUNT")]
         public decimal Amount { get; set; }
 
-     
+        public User? User { get; set; }
+
+
 
 
     }

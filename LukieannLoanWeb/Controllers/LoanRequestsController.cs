@@ -33,7 +33,10 @@ namespace LukieannLoanWeb.Controllers
             var loanRequest = _context.LoanRequests
               .Include(l => l.LoanTerm)
               .Include(l => l.LoanType)
-              .Include(q => q.LoanStatus);
+              .Include(q => q.LoanStatus)
+              .Include(q => q.User);
+
+            
             var lMap = mapper.Map<List<AddCustomertoIndexVM>>(loanRequest);
             return View(lMap);
         }

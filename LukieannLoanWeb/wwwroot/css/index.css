@@ -1,0 +1,42 @@
+.imageSize{
+    width: 800px;
+    height: 620px;
+    border:1px black solid ;
+}
+
+.promoFormat{
+    color: rgb(104, 91, 21);
+    text-decoration: underline;
+}
+
+.imageAndText{
+    margin: 0 150px;
+}
+
+@media (max-width: 900px){
+    .imageSize{
+        width: 600px;
+    height: 320px;
+    }
+    
+}
+
+@media (max-width: 670px){
+    .imageSize{
+        width: 330px;
+    height: 150px;
+    }
+    
+}
+
+.images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: fit-content;
+}
+
+
+
+

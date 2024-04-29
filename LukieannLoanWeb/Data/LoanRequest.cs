@@ -1,4 +1,5 @@
-﻿using LukieannLoanWeb.Constants;
+﻿
+using LukieannLoanWeb.Constants;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,5 +17,7 @@ namespace LukieannLoanWeb.Data
         public decimal? Amount { get; set; }
         public LoanStatus? LoanStatus { get; set; }
         public int? LoanStatusId { get; set; }
+
+        public User? User { get; set; }
     }
 }
