@@ -8,9 +8,19 @@
     <h1>Loan Types</h1>
 </div>
 
-<p>
-    <a class="btn btn-success mt-3" asp-action="Create">Create New</a>
-</p>
+@if (User.IsInRole("Administrator") || User.IsInRole("LoanManager"))
+{
+    <p>
+        <a class="btn btn-success mt-3" asp-action="Create">Create New</a>
+    </p>
+}
+
+@if (User.IsInRole("User"))
+{
+    <p>
+        <a class="btn btn-success" asp-controller="LoanRequests" asp-action="Create">Request a Loan</a>
+    </p>
+}
 
 <table class="table w-100">
     <thead>
@@ -38,18 +48,26 @@
                 </td>
 
                 <td align="right">
-                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <button data-id="@item.Id" class="btn btn-danger deleteBtn" type="button">Delete</button>
+                    @if (User.IsInRole("Administrator") || User.IsInRole("LoanManager"))
+                    {
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                    }
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    @if (User.IsInRole("Administrator") || User.IsInRole("LoanManager"))
+                    {
+                    <button data - id = "@item.Id" class="btn btn-danger deleteBtn" type="button">Delete</button> 
+                    }
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<form id="deleteForm" asp-action="Delete">
-    <input type="hidden" id="LoanType_ID" name="ID" />
-</form>
+
+    <form id="deleteForm" asp-action="Delete">
+        <input type="hidden" id="LoanType_ID" name="ID" />
+    </form>
+
 @section Scripts {
 
     <script>

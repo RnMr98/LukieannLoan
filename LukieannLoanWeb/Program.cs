@@ -33,6 +33,7 @@ builder.Services.AddScoped<ILoanRequestRepository, LoanRequestRepository>();
 builder.Services.AddScoped<LoanTerm>();
 builder.Services.AddScoped<Parish>();
 builder.Services.AddScoped<Status>();
+builder.Services.AddScoped<LoanType>();
 
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 
