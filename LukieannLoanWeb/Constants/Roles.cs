@@ -4,7 +4,7 @@
     {
         public const string Administrator = "Administrator";
         public const string User = "User";
-        public const string LoanManager = "Loan Manager";
+        public const string LoanManager = "LoanManager";
     }
 
  
