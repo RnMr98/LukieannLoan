@@ -19,7 +19,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Date" />
     
-            @if (User.IsInRole("Administrator") || User.IsInRole("Loan Manager"))
+            @if (User.IsInRole("Administrator") || User.IsInRole("LoanManager"))
             {
                 <div class="form-group">
                     <label asp-for="LoanTypeId" class="control-label"></label>
@@ -76,7 +76,7 @@
          
 
             <div class="form-group container d-inline-flex justify-content-around align-content-center border-top">
-                @if (User.IsInRole("Administrator") || User.IsInRole("Loan Manager"))
+                @if (User.IsInRole("Administrator") || User.IsInRole("LoanManager"))
                 {
                     <input type="submit" value="Save" class="btn btn-primary mt-3" />
                 }

@@ -43,13 +43,13 @@
     </dl>
 </div>
 <div class="container d-inline-flex justify-content-around align-content-center border-top">
-    @if (User.IsInRole("Administrator") || User.IsInRole("Loan Manager"))
+    @if (User.IsInRole("Administrator") || User.IsInRole("LoanManager"))
     {
     <a class="btn btn-primary mt-3" asp-action="Edit" asp-route-id="@Model?.Id">Edit Loan Request</a>
         <a class="btn btn-warning mt-3" asp-action="Index" asp-route-id="@Model?.Id">Back to Loan Requests</a>
 
     }
-    @if (!User.IsInRole("Loan Manager"))
+    @if (!User.IsInRole("LoanManager"))
     {
         <a class="btn btn-info mt-3" asp-action="MyLoans">Back to My Loans</a>
     }
